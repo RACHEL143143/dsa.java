@@ -1,0 +1,58 @@
+import java.util.Scanner;
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+public class Main
+{
+    Node top;
+    void push(int data){
+        Node newNode=new Node(data);
+        newNode.next=top;
+        top=newNode;
+
+    }
+    void pop(){
+        if(top.next!=null){
+            top=top.next;
+            return;
+        }
+        
+    }
+    void peek(){
+        if(top!=null){
+            System.out.println(top.data+" ");
+        }else{
+        System.out.println("stack is underflow");
+    }
+    }
+    void display(){
+        if(top==null){
+            System.out.println("stack is underflow");
+            return;
+        }
+        Node temp=top;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Main m=new Main();
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++){
+		    int a=sc.nextInt();
+		    m.push(a);
+		}
+		m.display();
+		m.pop();
+		m.peek();
+		m.display();
+	}
+}
