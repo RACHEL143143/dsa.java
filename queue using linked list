@@ -1,0 +1,58 @@
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class Queue{
+    Node front,rear;
+    Queue(){
+        front=rear=null;
+    }
+
+void enque(int data){
+    Node newNode=new Node(data);
+    if(rear==null){
+        front=rear=newNode;
+        return;
+    }
+    rear.next=newNode;
+    rear=newNode;
+    
+}
+void deque(){
+    if(front==null){
+        System.out.println("empty");
+    }
+    front=front.next;
+}
+void peek(){
+    if(front==null){
+        System.out.println("empty");
+    }
+    System.out.println(front.data);
+}
+void display(){
+    Node temp=front;
+    while(temp!=null){
+        System.out.print(temp.data+" ");
+        temp=temp.next;
+    }
+}
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Queue q=new Queue();
+		q.enque(10);
+		q.enque(20);
+		q.enque(30);
+		q.deque();
+		q.peek();
+		q.display();
+	}
+}
