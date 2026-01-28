@@ -1,0 +1,164 @@
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data; 
+        this.next=null;
+    }
+}
+public class List {
+    Node head;
+    void insert(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+        }
+        else{
+                Node temp=head;
+                while(temp.next!=null){
+                    temp=temp.next;
+                }
+                temp.next=newNode;
+            }
+            }
+            void beg(int data){
+                Node newNode=new Node(data);
+                if(head==null){
+                    head=newNode;
+                }else{
+                    newNode.next=head;
+                    head=newNode;
+                }
+            }
+            void last(int data){
+                Node newNode=new Node(data);
+                if(head==null){
+                    head=newNode;
+                }else{
+                    Node temp=head;
+                    while(temp.next!=null){
+                        temp=temp.next;
+                    }
+                    temp.next=newNode;
+
+                }
+            }
+            void pos(int data,int pos){
+                Node newNode=new Node(data);
+                    if(head==null){
+                        head=newNode;
+                    }else{
+                        Node temp=head;
+                        for(int i=1;i<pos-1;i++){
+                            temp=temp.next;
+                        }
+                        newNode.next=temp.next;
+                        temp.next=newNode;
+
+                    }
+            }
+            void count(){
+                Node temp=head;
+                int count=0;
+                while(temp!=null){
+                    count++;
+                    temp=temp.next;
+                }System.out.println(count);
+                
+            }
+            void firstdelete(){
+                if(head==null){
+                    return;
+                }else{
+                    if(head.next!=null){
+                        head=head.next;
+
+                    }
+            
+                }
+            }
+            void delpos(int pos){
+                if(pos==1){
+                    head=head.next;
+                }else{
+                    Node temp=head;
+                   for(int i=1;i<pos-1;i++){
+                    temp=temp.next;
+                   }
+                   temp.next=temp.next.next;
+
+                    }
+
+            
+                }
+                void lastdel(){
+                    if(head==null){
+                        return;
+                    }else{
+                        if(head.next==null){
+                            head=null;
+                        }else{
+                            Node temp=head;
+                            while(temp.next.next!=null){
+                                temp=temp.next;
+                            }
+                            temp.next=null;
+                        }
+                    }
+
+
+                }
+
+            void deletelement(int data){
+                if(head==null){
+                    return;
+                }else{
+                    if(head.data==data){
+                        head=head.next;
+                    }else{
+                        Node temp=head;
+                        while(temp.next!=null && temp.next.data!=data){
+                            temp=temp.next;
+                        }
+                        if(temp.next!=null){
+                            temp.next=temp.next.next;
+                        }
+                    }
+                }
+            }
+            void search(int value){
+                Node temp=head;
+                int pos=1;
+                while(temp!=null){
+                    if(temp.data==value){
+                        System.out.println("Element found at position: "+pos);
+                        return;
+                    }
+                    temp=temp.next;
+                    pos++;
+                }
+                System.out.println("Element not found");
+            }
+        void display(){
+            Node temp=head;
+            while(temp!=null){
+                System.out.println(temp.data);
+                temp=temp.next;
+            }
+        }
+    
+        public static void main(String[] args){
+         List lst=new List();
+         lst.insert(20);
+         lst.insert(30);
+            lst.beg(10);
+            lst.last(40);
+            lst.pos(25,3);
+            lst.firstdelete();
+            lst.delpos(3);
+            lst.deletelement(25);
+            lst.lastdel();
+            lst.count();
+            lst.display();
+}
+}
